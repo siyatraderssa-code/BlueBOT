@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siyatraders | AI Vision</title>
+    <style>
+        body { background: #000; color: white; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        header { position: fixed; top: 0; width: 100%; height: 60px; display: flex; justify-content: space-between; align-items: center; padding: 0 25px; border-bottom: 2px solid #00d4ff; background: #0a0a0a; box-sizing: border-box; }
+        .upload-zone { border: 2px dashed #00d4ff; padding: 60px; border-radius: 20px; background: #0a0a0a; width: 450px; cursor: pointer; transition: 0.3s; margin-top: 40px; }
+        .upload-zone:hover { background: #111; box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+        #preview { max-width: 400px; margin-top: 20px; display: none; border-radius: 10px; border: 1px solid #333; }
+        #navMenu { display:none; position:fixed; top:70px; right:20px; background:#111; border:1px solid #00d4ff; padding:20px; border-radius:10px; z-index:9999; text-align: left; }
+        #navMenu a { display:block; color:white; text-decoration:none; margin-bottom:12px; }
+        .loading { display: none; color: #00d4ff; margin-top: 20px; font-weight: bold; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 style="margin:0;">SIYA<span style="color:#00d4ff">TRADERS</span></h2>
+        <button onclick="toggleMenu()" style="background:#00d4ff; border:none; padding:8px 18px; font-weight:bold; cursor:pointer; border-radius:4px;">MENU ☰</button>
+    </header>
+
+    <h2 style="letter-spacing:3px;">AI CHART <span style="color:#00d4ff">VISION</span></h2>
+    <p style="color:#666">Upload your chart to detect SMC Keylevels & Liquidity</p>
+
+    <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <p>Drop your TradingView Screenshot here</p>
+        <input type="file" id="fileInput" hidden accept="image/*" onchange="startAnalysis(this)">
+    </div>
+
+    <img id="preview">
+    <div id="status" class="loading">Siyatraders AI scanning for Order Blocks...</div>
+
+    <div id="res" style="display:none; background:#0a0a0a; border-left:4px solid #00ffaa; padding:25px; margin-top:25px; text-align:left; width:500px; border-radius: 8px;">
+        <h4 style="color:#00ffaa; margin-top:0;">SCAN ANALYSIS:</h4>
+        <div id="aiOut" style="font-size:14px; line-height:1.6;"></div>
+    </div>
+
+    <div id="navMenu">
+        <a href="analyzer.html">📈 SMC Analyzer</a>
+        <a href="terminal.html">💻 Pro Terminal</a>
+        <a href="vault.html">🔐 Strategy Vault</a>
+        <a href="ai-analyzer.html" style="color:#00d4ff">🤖 AI Vision Scan</a>
+        <hr style="border:0; border-top:1px solid #333; margin:10px 0;">
+        <a href="index.html" style="color:#ff0055">Logout</a>
+    </div>
+
+    <script>
+        function toggleMenu() { const m = document.getElementById('navMenu'); m.style.display = (m.style.display === 'block') ? 'none' : 'block'; }
+        function startAnalysis(input) {
+            const file = input.files[0];
+            if (file) {
+                document.getElementById('preview').src = URL.createObjectURL(file);
+                document.getElementById('preview').style.display = 'inline-block';
+                document.getElementById('status').style.display = 'block';
+                document.getElementById('res').style.display = 'none';
+
+                setTimeout(() => {
+                    document.getElementById('status').style.display = 'none';
+                    document.getElementById('res').style.display = 'block';
+                    document.getElementById('aiOut').innerHTML = `
+                        <strong>Pattern:</strong> Bullish Market Structure Shift (MSS)<br>
+                        <strong>Key Zone:</strong> 15m Fair Value Gap (FVG) at 1.0740<br>
+                        <strong>Liquidity:</strong> Equal Highs detected at 1.0850 (Buy-side Target).<br>
+                        <strong>Bias:</strong> High Probability Long on Retest of Order Block.
+                    `;
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>

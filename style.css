@@ -1,0 +1,128 @@
+/* RESET & CORE COLORS */
+* { margin: 0; padding: 0; box-box: border-box; }
+
+:root {
+    --neon-blue: #00d4ff;
+    --dark-bg: #050505;
+    --glass-bg: rgba(20, 20, 20, 0.8);
+}
+
+body {
+    background-color: var(--dark-bg);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif; /* You can use sans-serif if you don't have fonts */
+    overflow: hidden;
+    color: white;
+}
+
+/* LIVE FLOATING BACKGROUND */
+.bg-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    z-index: -2;
+}
+
+.floating-orb {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--neon-blue);
+    filter: blur(150px);
+    opacity: 0.15;
+    border-radius: 50%;
+    animation: move 15s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes move {
+    from { transform: translate(-20%, -20%); }
+    to { transform: translate(20%, 20%); }
+}
+
+/* THE LOGIN BOX */
+.login-box {
+    background: var(--glass-bg);
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    width: 400px;
+}
+
+.logo-section h1 {
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+
+.logo-section span {
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px var(--neon-blue);
+}
+
+.subtitle {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* INPUTS */
+.input-group {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    font-size: 10px;
+    color: var(--neon-blue);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    background: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+/* NEON BUTTON */
+.neon-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--neon-blue);
+    color: #000;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.neon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.footer-info {
+    margin-top: 25px;
+    font-size: 9px;
+    color: #444;
+}

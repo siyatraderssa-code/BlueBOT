@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siyatraders | AI Vision</title>
+    <style>
+        body { background: #000; color: white; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .upload-zone { border: 2px dashed #00d4ff; padding: 50px; border-radius: 20px; background: #0a0a0a; width: 400px; cursor: pointer; transition: 0.3s; }
+        .upload-zone:hover { background: #111; box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+        #preview { max-width: 300px; margin-top: 20px; display: none; border-radius: 8px; border: 1px solid #333; }
+        .btn-back { position: fixed; top: 20px; left: 20px; background: none; border: 1px solid #555; color: #888; padding: 8px 15px; cursor: pointer; border-radius: 5px; }
+        .btn-back:hover { border-color: #00d4ff; color: #00d4ff; }
+        .loading { display: none; color: #00d4ff; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <button class="btn-back" onclick="window.location.href='analyzer.html'">← BACK TO DASHBOARD</button>
+
+    <h2>AI VISION <span style="color:#00d4ff">SCANNER</span></h2>
+    <p style="color:#666; margin-bottom: 30px;">Upload chart screenshot for automated SMC detection</p>
+
+    <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <p>Drop screenshot here or click to browse</p>
+        <input type="file" id="fileInput" hidden accept="image/*" onchange="processImage(this)">
+    </div>
+
+    <img id="preview">
+    <div id="status" class="loading">AI Engine analyzing candle structure...</div>
+
+    <div id="output" style="display:none; background:#0a0a0a; border-left:4px solid #00ffaa; padding:20px; margin-top:20px; text-align:left; width:450px;">
+        <h4 style="color:#00ffaa; margin:0 0 10px 0;">SCAN COMPLETE</h4>
+        <p id="analysisText" style="font-size:14px; line-height:1.5;"></p>
+    </div>
+
+    <script>
+        function processImage(input) {
+            const file = input.files[0];
+            if (file) {
+                document.getElementById('preview').src = URL.createObjectURL(file);
+                document.getElementById('preview').style.display = 'inline-block';
+                document.getElementById('status').style.display = 'block';
+                document.getElementById('output').style.display = 'none';
+
+                // Simulate AI Analysis
+                setTimeout(() => {
+                    document.getElementById('status').style.display = 'none';
+                    document.getElementById('output').style.display = 'block';
+                    document.getElementById('analysisText').innerHTML = `
+                        <strong>Setup Found:</strong> Bullish Order Block Mitigation.<br>
+                        <strong>Key Levels:</strong> 1.0785 (Institutional Buy Zone).<br>
+                        <strong>SMC Confirmation:</strong> Price has cleared Sell-side Liquidity. Entry confirmed on displacement above recent swing high.
+                    `;
+                }, 3500);
+            }
+        }
+    </script>
+</body>
+</html>

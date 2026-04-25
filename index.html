@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siyatraders | Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #000; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; }
+        .login-card { background: #0a0a0a; padding: 40px; border: 1px solid #00d4ff; border-radius: 15px; text-align: center; box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+        input { background: #111; border: 1px solid #333; color: white; padding: 10px; width: 200px; margin-bottom: 20px; border-radius: 5px; text-align: center; }
+        button { background: #00d4ff; color: black; border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>SIYA<span style="color:#00d4ff">TRADERS</span></h2>
+        <p style="color:#666">Enter Access Key</p>
+        <input type="password" id="accessKey" placeholder="••••••••"> <br>
+        <button onclick="checkLogin()">ENTER SYSTEM</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            const key = document.getElementById('accessKey').value;
+            if(key === 'admin123') {
+                window.location.href = "analyzer.html";
+            } else { alert('Invalid Access Key'); }
+        }
+    </script>
+</body>
+</html>

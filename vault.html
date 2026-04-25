@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siyatraders | Secure Vault</title>
+    <style>
+        body { background: #000; color: white; margin: 0; font-family: sans-serif; overflow: hidden; user-select: none; }
+        header { height: 60px; display: flex; justify-content: space-between; align-items: center; padding: 0 25px; border-bottom: 2px solid #00d4ff; background: #050505; }
+        .wrapper { height: calc(100vh - 60px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .pdf-frame { width: 90%; max-width: 1100px; height: 85%; border: 2px solid #00d4ff; border-radius: 12px; overflow: hidden; background: #111; box-shadow: 0 0 30px rgba(0,212,255,0.1); }
+        #navMenu { display:none; position:fixed; top:70px; right:20px; background:#111; border:1px solid #00d4ff; padding:20px; border-radius:10px; z-index:9999; }
+        #navMenu a { display:block; color:white; text-decoration:none; margin-bottom:12px; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <header>
+        <h2 style="margin:0;">SIYA<span style="color:#00d4ff">TRADERS</span></h2>
+        <button onclick="toggleMenu()" style="background:#00d4ff; border:none; padding:8px 18px; font-weight:bold; cursor:pointer; border-radius:4px;">MENU ☰</button>
+    </header>
+
+    <div class="wrapper">
+        <h3 style="letter-spacing:5px; color:#00d4ff; margin-bottom:20px;">PRIVATE STRATEGY VAULT</h3>
+        <div class="pdf-frame">
+            <iframe src="strategy.pdf#toolbar=0" width="100%" height="100%" style="border:none;"></iframe>
+        </div>
+    </div>
+
+    <div id="navMenu">
+        <a href="analyzer.html">📈 SMC Analyzer</a>
+        <a href="terminal.html">💻 Pro Terminal</a>
+        <a href="vault.html" style="color:#00d4ff">🔐 Strategy Vault</a>
+        <a href="ai-analyzer.html">🤖 AI Vision Scan</a>
+        <hr style="border:0; border-top:1px solid #333; margin:10px 0;">
+        <a href="index.html" style="color:#ff0055">Logout</a>
+    </div>
+
+    <script>
+        function toggleMenu() { const m = document.getElementById('navMenu'); m.style.display = (m.style.display === 'block') ? 'none' : 'block'; }
+    </script>
+</body>
+</html>
