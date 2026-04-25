@@ -1,0 +1,2 @@
+# BlueBOT
+private tradin terminal
